@@ -13,7 +13,7 @@ class Vetor_nao_Ordenado:
         if self.ultima_posicao == -1: 
             print("Vetor está vazio")
         else:
-            for i in range(self.ultima_posicao + 1): # Percorre os elementos do vetor 
+            for i in range(self.ultima_posicao + 1): # Percorre todos elementos do vetor 
                 print(i, "---", self.vetor[i]) # Printa o index e o elemento correspondente no vetor
 
 
@@ -22,7 +22,7 @@ class Vetor_nao_Ordenado:
         if self.ultima_posicao == self.capacidade - 1: # Ex: capacidade = 5 tem como ultima posição 4, pois a posição começa a partir do 0
             print("O vetor está cheio")
         else:
-            self.ultima_posicao += 1 # Incrementa posição para representar o index o valor e mudar o novo elemento na ultima posição
+            self.ultima_posicao += 1 # Incrementa posição para representar o index do valor e mudar o novo elemento na ultima posição
             self.vetor[self.ultima_posicao] = valor # Index do vetor [representado pela variável ultima posicao] = valor escolhido pelo usuário
 
 # Função Pesquisar
@@ -35,7 +35,7 @@ class Vetor_nao_Ordenado:
 # Função Remover
     def remover(self, valor):
         posicao = self.pesquisar(valor) # Realiza a pesquisa pra ver se o valor está no vetor
-        if posicao == -1:
+        if posicao == -1: # -1 retorno da função pesquisar
             print("Não possui esse elemento no vetor")
 
         else:
