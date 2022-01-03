@@ -29,7 +29,7 @@ class Vetor_nao_Ordenado:
     def pesquisar(self, valor):
         for i in range(self.ultima_posicao + 1): # Percorre os elementos do vetor 
             if valor == self.vetor[i]: # Se o valor procurado for igual ao valor no vetor
-                return i 
+                return i # Retorna o index correspondente do valor
         return -1 # Retorna -1 caso não encontre o valor 
 
 # Função Remover
