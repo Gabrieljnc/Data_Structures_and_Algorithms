@@ -10,7 +10,7 @@ class Vetor_Ordenado:
 
 # Imprime
 
-    def Imprime(self):
+    def Imprimir(self):
         if self.ultima_posicao == -1:
             print("\nVetor está vazio")
         else:
@@ -44,11 +44,12 @@ class Vetor_Ordenado:
         self.vetor[posicao] = valor_a_inserir # Atribuição do valor à posição 
         self.ultima_posicao += 1 # Incrementa a ultima_posição, pois foi add um novo numero
 
-    def pesquisar(self,valor_a_pesquisar):
+    def Pesquisa_Linear(self,valor_a_pesquisar):
 
         for i in range(self.ultima_posicao + 1):
 
             if self.vetor[i] == valor_a_pesquisar: # Se encontrar
+                print("\nValor Encontrado\n")
                 return i
 
             if self.vetor[i] > valor_a_pesquisar: # Se não encontrar
@@ -56,13 +57,34 @@ class Vetor_Ordenado:
         
             if i == self.ultima_posicao: # Se o valor_a_pesquisar for o maior numero
                 return -1
+    
+    def Pesquisa_Binaria(self, valor_a_pesquisar):
+        limite_inferior = 0 # Define o limite inferior
+        limite_superior = self.ultima_posicao # Define o limite superior
+        
+        while True:
+            posicao_atual = int((limite_inferior + limite_superior) / 2) # Define a metade do vetor para selecionar a posicao
+            
+            if self.vetor[posicao_atual] == valor_a_pesquisar: # se encontrar na primeira tentativa
+                return posicao_atual
+            
+            elif limite_inferior > limite_superior: # se não encontrar
+                return -1
+            
+            else:
+                if self.vetor[posicao_atual] < valor_a_pesquisar: # o número está a direita
+                    limite_inferior = posicao_atual + 1
+                else:
+                    limite_superior = posicao_atual - 1 # o número está a esquerda
 
-    def excluir(self, valor_a_excluir):
-        posicao = self.pesquisar(valor_a_excluir) # Realiza a pesquisa do número pra ver se ele ta no vetor
+    def Excluir(self, valor_a_excluir):
+        posicao = self.Pesquisa_Linear(valor_a_excluir) # Realiza a pesquisa do número pra ver se ele ta no vetor
         if posicao == -1: 
+            print("Valor não encontrado no vetor - Não foi realizado nenhuma remoção\n")
             return -1
         
         else:
+            print("O valor foi encontrado na lista e removido\n")
             for i in range(posicao,self.ultima_posicao): # Remanejamento de posição para substituir o elemento
                 self.vetor[i] = self.vetor[i + 1] 
 
@@ -79,13 +101,13 @@ vetor.Inserir(12)
 vetor.Inserir(10)
 
 # Pesquisar elemento
-vetor.pesquisar(13)
+vetor.Pesquisa_Linear(10)
 
 # Excluir elemento
-vetor.excluir(3)
+vetor.Excluir(3)
 
 # Imprimir
-vetor.Imprime()
+vetor.Imprimir()
 
 
 
