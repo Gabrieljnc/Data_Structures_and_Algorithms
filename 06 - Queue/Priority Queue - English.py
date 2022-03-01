@@ -20,15 +20,6 @@ class Queue_Priority():
     def full_queue(self):
         return self.number_elements == self.capacity
 
-    def all_elements(self):
-        if self.empty_queue():
-            print(f"\n{Fore.RED}The queue is empty\n")
-            return
-        else:
-            for i in range(6):
-                print(i, self.queue[i])
-                return
-
     def enqueue(self, value_to_enqueue):
         if self.full_queue():
             print(f"{Fore.RED} The queue is full\n")
